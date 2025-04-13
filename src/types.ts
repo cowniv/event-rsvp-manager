@@ -7,3 +7,9 @@ export interface Guest {
   status: RsvpStatus;
   checkedIn: boolean;
 }
+
+export interface EventItem {
+  id: string;
+  title: string;
+  date: string; // ISO date
+}
