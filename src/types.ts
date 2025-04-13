@@ -12,4 +12,7 @@ export interface EventItem {
   id: string;
   title: string;
   date: string; // ISO date
+  venue: string;
+  capacity: number;
+  guests: Guest[];
 }
