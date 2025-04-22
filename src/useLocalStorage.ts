@@ -16,5 +16,5 @@ export function useLocalStorage<T>(key: string, initial: T) {
     } catch {
       /* storage full or blocked – app still works in memory */
     }
-  });
+  }, [key, value]);
 }
