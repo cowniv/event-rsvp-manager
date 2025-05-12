@@ -3,4 +3,5 @@
 @theme {
   --color-brand: #2f4c70;
   --color-brand-light: #e6ecf5;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
