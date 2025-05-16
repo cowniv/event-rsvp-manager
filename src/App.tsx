@@ -11,6 +11,9 @@ const SEED: EventItem[] = [
     date: "2025-07-12",
     venue: "PUP Main, Room 402",
     capacity: 40,
-    guests: [],
+    guests: [
+      { id: uid(), name: "Marco Reyes", email: "marco@example.com", status: "going", checkedIn: false },
+      { id: uid(), name: "Andrea Cruz", email: "andrea@example.com", status: "maybe", checkedIn: false },
+    ],
   },
 ];
