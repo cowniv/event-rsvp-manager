@@ -17,3 +17,9 @@ const SEED: EventItem[] = [
     ],
   },
 ];
+
+const STATUS_STYLES: Record<RsvpStatus, string> = {
+  going: "bg-green-100 text-green-700",
+  maybe: "bg-amber-100 text-amber-700",
+  declined: "bg-rose-100 text-rose-700",
+};
