@@ -23,3 +23,7 @@ const STATUS_STYLES: Record<RsvpStatus, string> = {
   maybe: "bg-amber-100 text-amber-700",
   declined: "bg-rose-100 text-rose-700",
 };
+
+export default function App() {
+  const [events, setEvents] = useLocalStorage<EventItem[]>("rsvp-events", SEED);
+}
