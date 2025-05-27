@@ -26,4 +26,6 @@ const STATUS_STYLES: Record<RsvpStatus, string> = {
 
 export default function App() {
   const [events, setEvents] = useLocalStorage<EventItem[]>("rsvp-events", SEED);
+  const [selectedId, setSelectedId] = useState<string>(events[0]?.id ?? "");
+  const selected = events.find((e) => e.id === selectedId);
 }
