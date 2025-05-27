@@ -28,4 +28,7 @@ export default function App() {
   const [events, setEvents] = useLocalStorage<EventItem[]>("rsvp-events", SEED);
   const [selectedId, setSelectedId] = useState<string>(events[0]?.id ?? "");
   const selected = events.find((e) => e.id === selectedId);
+
+  const updateEvent = (id: string, fn: (e: EventItem) => EventItem) =>
+    setEvents((prev) => prev.map((e) => (e.id === id ? fn(e) : e)));
 }
