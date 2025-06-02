@@ -31,4 +31,10 @@ export default function App() {
 
   const updateEvent = (id: string, fn: (e: EventItem) => EventItem) =>
     setEvents((prev) => prev.map((e) => (e.id === id ? fn(e) : e)));
+
+  const createEvent = (data: Omit<EventItem, "id" | "guests">) => {
+    const event: EventItem = { ...data, id: uid(), guests: [] };
+    setEvents((prev) => [...prev, event]);
+    setSelectedId(event.id);
+  };
 }
