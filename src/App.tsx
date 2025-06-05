@@ -58,6 +58,13 @@ export default function App() {
           <ul className="space-y-2">
             {events.map((e) => (
               <li key={e.id}>
+                <button
+                  onClick={() => setSelectedId(e.id)}
+                  className={`w-full rounded-xl border p-3 text-left transition ${
+                    e.id === selectedId ? "border-brand bg-brand-light" : "border-slate-200 bg-white hover:border-slate-300"
+                  }`}
+                >
+                </button>
               </li>
             ))}
           </ul>
