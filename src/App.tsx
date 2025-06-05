@@ -42,4 +42,15 @@ export default function App() {
     setEvents((prev) => prev.filter((e) => e.id !== id));
     setSelectedId(events.find((e) => e.id !== id)?.id ?? "");
   };
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800">
+      <header className="bg-brand text-white">
+        <div className="mx-auto max-w-6xl px-4 py-5">
+          <h1 className="text-xl font-bold">Event RSVP Manager</h1>
+          <p className="text-sm text-white/70">Plan org events, track RSVPs and check guests in.</p>
+        </div>
+      </header>
+    </div>
+  );
 }
