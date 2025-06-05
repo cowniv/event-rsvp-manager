@@ -73,6 +73,16 @@ export default function App() {
             ))}
           </ul>
         </aside>
+
+        {selected ? (
+          <EventDetail
+            event={selected}
+            onChange={(fn) => updateEvent(selected.id, fn)}
+            onDelete={() => deleteEvent(selected.id)}
+          />
+        ) : (
+          <p className="text-slate-500">Create your first event to get started.</p>
+        )}
       </main>
     </div>
   );
