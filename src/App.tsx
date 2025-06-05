@@ -51,6 +51,14 @@ export default function App() {
           <p className="text-sm text-white/70">Plan org events, track RSVPs and check guests in.</p>
         </div>
       </header>
+
+      <main className="mx-auto grid max-w-6xl gap-6 px-4 py-6 md:grid-cols-[300px_1fr]">
+        <aside className="space-y-4">
+          <EventForm onCreate={createEvent} />
+          <ul className="space-y-2">
+          </ul>
+        </aside>
+      </main>
     </div>
   );
 }
