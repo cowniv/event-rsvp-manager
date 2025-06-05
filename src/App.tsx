@@ -64,6 +64,10 @@ export default function App() {
                     e.id === selectedId ? "border-brand bg-brand-light" : "border-slate-200 bg-white hover:border-slate-300"
                   }`}
                 >
+                  <p className="font-semibold">{e.title}</p>
+                  <p className="text-xs text-slate-500">
+                    {new Date(e.date).toLocaleDateString("en-PH", { dateStyle: "medium" })} · {e.venue}
+                  </p>
                 </button>
               </li>
             ))}
