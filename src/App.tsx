@@ -56,6 +56,10 @@ export default function App() {
         <aside className="space-y-4">
           <EventForm onCreate={createEvent} />
           <ul className="space-y-2">
+            {events.map((e) => (
+              <li key={e.id}>
+              </li>
+            ))}
           </ul>
         </aside>
       </main>
