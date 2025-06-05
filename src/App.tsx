@@ -37,4 +37,9 @@ export default function App() {
     setEvents((prev) => [...prev, event]);
     setSelectedId(event.id);
   };
+
+  const deleteEvent = (id: string) => {
+    setEvents((prev) => prev.filter((e) => e.id !== id));
+    setSelectedId(events.find((e) => e.id !== id)?.id ?? "");
+  };
 }
