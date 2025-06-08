@@ -87,3 +87,8 @@ export default function App() {
     </div>
   );
 }
+
+function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests">) => void }) {
+  const [open, setOpen] = useState(false);
+  const [form, setForm] = useState({ title: "", date: "", venue: "", capacity: 30 });
+}
