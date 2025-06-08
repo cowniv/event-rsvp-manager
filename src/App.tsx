@@ -99,4 +99,17 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
       </button>
     );
   }
+
+  return (
+    <form
+      className="space-y-2 rounded-xl border border-slate-200 bg-white p-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+        onCreate(form);
+        setForm({ title: "", date: "", venue: "", capacity: 30 });
+        setOpen(false);
+      }}
+    >
+    </form>
+  );
 }
