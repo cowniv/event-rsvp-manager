@@ -91,4 +91,12 @@ export default function App() {
 function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests">) => void }) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ title: "", date: "", venue: "", capacity: 30 });
+
+  if (!open) {
+    return (
+      <button onClick={() => setOpen(true)} className="w-full rounded-xl bg-brand py-2.5 font-semibold text-white hover:opacity-90">
+        + New event
+      </button>
+    );
+  }
 }
