@@ -121,3 +121,14 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
     </form>
   );
 }
+
+function EventDetail({
+  event,
+  onChange,
+  onDelete,
+}: {
+  event: EventItem;
+  onChange: (fn: (e: EventItem) => EventItem) => void;
+  onDelete: () => void;
+}) {
+}
