@@ -152,4 +152,14 @@ function EventDetail({
       (filter === "all" || g.status === filter) &&
       (g.name + g.email).toLowerCase().includes(query.toLowerCase())
   );
+
+  const isFull = stats.going >= event.capacity;
+
+  const addGuest = (e: FormEvent) => {
+    e.preventDefault();
+    if (event.guests.some((g) => g.email.toLowerCase() === email.toLowerCase())) {
+      setError("That email already RSVP'd.");
+      return;
+    }
+  };
 }
