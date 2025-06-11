@@ -114,6 +114,10 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
       <input required type="date" className="input" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} />
       <input required placeholder="Venue" className="input" value={form.venue} onChange={(e) => setForm({ ...form, venue: e.target.value })} />
       <input required type="number" min={1} className="input" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: Number(e.target.value) })} />
+      <div className="flex gap-2">
+        <button className="flex-1 rounded-lg bg-brand py-2 text-sm font-semibold text-white">Create</button>
+        <button type="button" onClick={() => setOpen(false)} className="rounded-lg px-3 text-sm text-slate-500">Cancel</button>
+      </div>
     </form>
   );
 }
