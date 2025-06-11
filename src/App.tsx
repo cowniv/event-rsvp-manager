@@ -131,4 +131,9 @@ function EventDetail({
   onChange: (fn: (e: EventItem) => EventItem) => void;
   onDelete: () => void;
 }) {
+  const [filter, setFilter] = useState<RsvpStatus | "all">("all");
+  const [query, setQuery] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 }
