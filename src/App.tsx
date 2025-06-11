@@ -161,5 +161,10 @@ function EventDetail({
       setError("That email already RSVP'd.");
       return;
     }
+    const guest: Guest = { id: uid(), name, email, status: isFull ? "maybe" : "going", checkedIn: false };
+    onChange((ev) => ({ ...ev, guests: [...ev.guests, guest] }));
+    setName("");
+    setEmail("");
+    setError(isFull ? "Event is full, so the guest was added as 'maybe' (waitlist)." : "");
   };
 }
