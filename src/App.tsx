@@ -136,4 +136,14 @@ function EventDetail({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+
+  const stats = useMemo(() => {
+    const count = (s: RsvpStatus) => event.guests.filter((g) => g.status === s).length;
+    return {
+      going: count("going"),
+      maybe: count("maybe"),
+      declined: count("declined"),
+      checkedIn: event.guests.filter((g) => g.checkedIn).length,
+    };
+  }, [event.guests]);
 }
