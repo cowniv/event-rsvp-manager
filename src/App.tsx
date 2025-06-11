@@ -146,4 +146,10 @@ function EventDetail({
       checkedIn: event.guests.filter((g) => g.checkedIn).length,
     };
   }, [event.guests]);
+
+  const visible = event.guests.filter(
+    (g) =>
+      (filter === "all" || g.status === filter) &&
+      (g.name + g.email).toLowerCase().includes(query.toLowerCase())
+  );
 }
