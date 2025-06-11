@@ -112,6 +112,8 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
     >
       <input required placeholder="Event title" className="input" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
       <input required type="date" className="input" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} />
+      <input required placeholder="Venue" className="input" value={form.venue} onChange={(e) => setForm({ ...form, venue: e.target.value })} />
+      <input required type="number" min={1} className="input" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: Number(e.target.value) })} />
     </form>
   );
 }
