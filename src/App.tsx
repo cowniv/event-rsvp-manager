@@ -167,4 +167,7 @@ function EventDetail({
     setEmail("");
     setError(isFull ? "Event is full, so the guest was added as 'maybe' (waitlist)." : "");
   };
+
+  const patchGuest = (id: string, patch: Partial<Guest>) =>
+    onChange((ev) => ({ ...ev, guests: ev.guests.map((g) => (g.id === id ? { ...g, ...patch } : g)) }));
 }
