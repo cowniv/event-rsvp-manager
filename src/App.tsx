@@ -170,4 +170,9 @@ function EventDetail({
 
   const patchGuest = (id: string, patch: Partial<Guest>) =>
     onChange((ev) => ({ ...ev, guests: ev.guests.map((g) => (g.id === id ? { ...g, ...patch } : g)) }));
+
+  const exportCsv = () => {
+    const rows = [["Name", "Email", "Status", "Checked in"], ...event.guests.map((g) => [g.name, g.email, g.status, g.checkedIn ? "yes" : "no"])];
+    const csv = rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(",")).join("\n");
+  };
 }
