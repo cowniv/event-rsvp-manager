@@ -187,6 +187,10 @@ function EventDetail({
           <h2 className="text-2xl font-bold">{event.title}</h2>
           <p className="text-slate-500">{event.venue}</p>
         </div>
+        <div className="flex gap-2">
+          <button onClick={exportCsv} className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm">Export CSV</button>
+          <button onClick={onDelete} className="rounded-lg px-3 py-1.5 text-sm text-rose-600 hover:bg-rose-50">Delete</button>
+        </div>
       </div>
     </section>
   );
