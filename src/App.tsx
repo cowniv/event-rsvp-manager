@@ -174,5 +174,9 @@ function EventDetail({
   const exportCsv = () => {
     const rows = [["Name", "Email", "Status", "Checked in"], ...event.guests.map((g) => [g.name, g.email, g.status, g.checkedIn ? "yes" : "no"])];
     const csv = rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(",")).join("\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+    a.download = `${event.title.replace(/\W+/g, "-").toLowerCase()}-guests.csv`;
+    a.click();
   };
 }
