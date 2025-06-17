@@ -125,6 +125,10 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
         <Stat label="Declined" value={stats.declined} />
         <Stat label="Checked in" value={stats.checkedIn} />
       </div>
+
+      <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+        <div className="h-full bg-brand transition-all" style={{ width: `${Math.min(100, (stats.going / event.capacity) * 100)}%` }} />
+      </div>
     </form>
   );
 }
