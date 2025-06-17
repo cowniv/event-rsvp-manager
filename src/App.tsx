@@ -118,6 +118,13 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
         <button className="flex-1 rounded-lg bg-brand py-2 text-sm font-semibold text-white">Create</button>
         <button type="button" onClick={() => setOpen(false)} className="rounded-lg px-3 text-sm text-slate-500">Cancel</button>
       </div>
+
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <Stat label="Going" value={`${stats.going}/${event.capacity}`} />
+        <Stat label="Maybe" value={stats.maybe} />
+        <Stat label="Declined" value={stats.declined} />
+        <Stat label="Checked in" value={stats.checkedIn} />
+      </div>
     </form>
   );
 }
