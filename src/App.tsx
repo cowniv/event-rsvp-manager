@@ -179,4 +179,15 @@ function EventDetail({
     a.download = `${event.title.replace(/\W+/g, "-").toLowerCase()}-guests.csv`;
     a.click();
   };
+
+  return (
+    <section className="space-y-5">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 className="text-2xl font-bold">{event.title}</h2>
+          <p className="text-slate-500">{event.venue}</p>
+        </div>
+      </div>
+    </section>
+  );
 }
