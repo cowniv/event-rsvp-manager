@@ -166,6 +166,15 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
               <p className="font-medium">{g.name}</p>
               <p className="text-xs text-slate-500">{g.email}</p>
             </div>
+            <select
+              value={g.status}
+              onChange={(e) => patchGuest(g.id, { status: e.target.value as RsvpStatus, checkedIn: false })}
+              className={`rounded-full px-2 py-1 text-xs font-semibold ${STATUS_STYLES[g.status]}`}
+            >
+              <option value="going">going</option>
+              <option value="maybe">maybe</option>
+              <option value="declined">declined</option>
+            </select>
           </li>
         ))}
       </ul>
