@@ -175,6 +175,13 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
               <option value="maybe">maybe</option>
               <option value="declined">declined</option>
             </select>
+            <button
+              onClick={() => onChange((ev) => ({ ...ev, guests: ev.guests.filter((x) => x.id !== g.id) }))}
+              className="text-slate-300 hover:text-rose-500"
+              aria-label={`Remove ${g.name}`}
+            >
+              ✕
+            </button>
           </li>
         ))}
       </ul>
