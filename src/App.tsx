@@ -136,6 +136,18 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
         <button className="rounded-lg bg-brand px-4 text-sm font-semibold text-white">Add guest</button>
         {error && <p className="w-full text-sm text-amber-700">{error}</p>}
       </form>
+
+      <div className="flex flex-wrap gap-2">
+        {(["all", "going", "maybe", "declined"] as const).map((s) => (
+          <button
+            key={s}
+            onClick={() => setFilter(s)}
+            className={`rounded-full px-3 py-1 text-sm capitalize ${filter === s ? "bg-brand text-white" : "bg-white text-slate-600"}`}
+          >
+            {s}
+          </button>
+        ))}
+      </div>
     </form>
   );
 }
