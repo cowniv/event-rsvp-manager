@@ -129,6 +129,13 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
       <div className="h-2 overflow-hidden rounded-full bg-slate-200">
         <div className="h-full bg-brand transition-all" style={{ width: `${Math.min(100, (stats.going / event.capacity) * 100)}%` }} />
       </div>
+
+      <form onSubmit={addGuest} className="flex flex-wrap gap-2 rounded-xl border border-slate-200 bg-white p-3">
+        <input required placeholder="Guest name" className="input flex-1" value={name} onChange={(e) => setName(e.target.value)} />
+        <input required type="email" placeholder="Email" className="input flex-1" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <button className="rounded-lg bg-brand px-4 text-sm font-semibold text-white">Add guest</button>
+        {error && <p className="w-full text-sm text-amber-700">{error}</p>}
+      </form>
     </form>
   );
 }
