@@ -154,6 +154,14 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
         {visible.length === 0 && <li className="p-6 text-center text-sm text-slate-400">No guests yet.</li>}
         {visible.map((g) => (
           <li key={g.id} className="flex flex-wrap items-center gap-3 p-3">
+            <input
+              type="checkbox"
+              className="size-4 accent-brand"
+              checked={g.checkedIn}
+              disabled={g.status !== "going"}
+              onChange={(e) => patchGuest(g.id, { checkedIn: e.target.checked })}
+              aria-label={`Check in ${g.name}`}
+            />
           </li>
         ))}
       </ul>
