@@ -149,6 +149,14 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
         ))}
         <input placeholder="Search guests…" className="input ml-auto max-w-56" value={query} onChange={(e) => setQuery(e.target.value)} />
       </div>
+
+      <ul className="divide-y divide-slate-100 overflow-hidden rounded-xl border border-slate-200 bg-white">
+        {visible.length === 0 && <li className="p-6 text-center text-sm text-slate-400">No guests yet.</li>}
+        {visible.map((g) => (
+          <li key={g.id} className="flex flex-wrap items-center gap-3 p-3">
+          </li>
+        ))}
+      </ul>
     </form>
   );
 }
