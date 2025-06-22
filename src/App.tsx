@@ -147,6 +147,7 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
             {s}
           </button>
         ))}
+        <input placeholder="Search guests…" className="input ml-auto max-w-56" value={query} onChange={(e) => setQuery(e.target.value)} />
       </div>
     </form>
   );
