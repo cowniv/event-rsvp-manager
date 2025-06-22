@@ -162,6 +162,10 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
               onChange={(e) => patchGuest(g.id, { checkedIn: e.target.checked })}
               aria-label={`Check in ${g.name}`}
             />
+            <div className="min-w-40 flex-1">
+              <p className="font-medium">{g.name}</p>
+              <p className="text-xs text-slate-500">{g.email}</p>
+            </div>
           </li>
         ))}
       </ul>
