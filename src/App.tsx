@@ -262,3 +262,12 @@ function EventDetail({
     </section>
   );
 }
+
+function Stat({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white p-3">
+      <p className="text-xs uppercase tracking-wide text-slate-500">{label}</p>
+      <p className="text-2xl font-bold text-brand">{value}</p>
+    </div>
+  );
+}
