@@ -11,3 +11,9 @@ An event tool for student orgs: create events, collect RSVPs, enforce capacity, 
 - Door check-in (only for "going" guests)
 - Export guest list to CSV
 - Persists with a typed `useLocalStorage<T>` hook
+
+### Run
+```bash
+npm install
+npm run dev
+```
