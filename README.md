@@ -17,3 +17,8 @@ An event tool for student orgs: create events, collect RSVPs, enforce capacity, 
 npm install
 npm run dev
 ```
+
+### What I practiced
+- TypeScript with React: interfaces, union types, generics, `Record`, `Omit`, `Partial`
+- Tailwind CSS v4 with `@theme` tokens
+- Writing a custom hook

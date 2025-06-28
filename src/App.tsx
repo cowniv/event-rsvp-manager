@@ -118,73 +118,6 @@ function EventForm({ onCreate }: { onCreate: (d: Omit<EventItem, "id" | "guests"
         <button className="flex-1 rounded-lg bg-brand py-2 text-sm font-semibold text-white">Create</button>
         <button type="button" onClick={() => setOpen(false)} className="rounded-lg px-3 text-sm text-slate-500">Cancel</button>
       </div>
-
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Going" value={`${stats.going}/${event.capacity}`} />
-        <Stat label="Maybe" value={stats.maybe} />
-        <Stat label="Declined" value={stats.declined} />
-        <Stat label="Checked in" value={stats.checkedIn} />
-      </div>
-
-      <div className="h-2 overflow-hidden rounded-full bg-slate-200">
-        <div className="h-full bg-brand transition-all" style={{ width: `${Math.min(100, (stats.going / event.capacity) * 100)}%` }} />
-      </div>
-
-      <form onSubmit={addGuest} className="flex flex-wrap gap-2 rounded-xl border border-slate-200 bg-white p-3">
-        <input required placeholder="Guest name" className="input flex-1" value={name} onChange={(e) => setName(e.target.value)} />
-        <input required type="email" placeholder="Email" className="input flex-1" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <button className="rounded-lg bg-brand px-4 text-sm font-semibold text-white">Add guest</button>
-        {error && <p className="w-full text-sm text-amber-700">{error}</p>}
-      </form>
-
-      <div className="flex flex-wrap gap-2">
-        {(["all", "going", "maybe", "declined"] as const).map((s) => (
-          <button
-            key={s}
-            onClick={() => setFilter(s)}
-            className={`rounded-full px-3 py-1 text-sm capitalize ${filter === s ? "bg-brand text-white" : "bg-white text-slate-600"}`}
-          >
-            {s}
-          </button>
-        ))}
-        <input placeholder="Search guests…" className="input ml-auto max-w-56" value={query} onChange={(e) => setQuery(e.target.value)} />
-      </div>
-
-      <ul className="divide-y divide-slate-100 overflow-hidden rounded-xl border border-slate-200 bg-white">
-        {visible.length === 0 && <li className="p-6 text-center text-sm text-slate-400">No guests yet.</li>}
-        {visible.map((g) => (
-          <li key={g.id} className="flex flex-wrap items-center gap-3 p-3">
-            <input
-              type="checkbox"
-              className="size-4 accent-brand"
-              checked={g.checkedIn}
-              disabled={g.status !== "going"}
-              onChange={(e) => patchGuest(g.id, { checkedIn: e.target.checked })}
-              aria-label={`Check in ${g.name}`}
-            />
-            <div className="min-w-40 flex-1">
-              <p className="font-medium">{g.name}</p>
-              <p className="text-xs text-slate-500">{g.email}</p>
-            </div>
-            <select
-              value={g.status}
-              onChange={(e) => patchGuest(g.id, { status: e.target.value as RsvpStatus, checkedIn: false })}
-              className={`rounded-full px-2 py-1 text-xs font-semibold ${STATUS_STYLES[g.status]}`}
-            >
-              <option value="going">going</option>
-              <option value="maybe">maybe</option>
-              <option value="declined">declined</option>
-            </select>
-            <button
-              onClick={() => onChange((ev) => ({ ...ev, guests: ev.guests.filter((x) => x.id !== g.id) }))}
-              className="text-slate-300 hover:text-rose-500"
-              aria-label={`Remove ${g.name}`}
-            >
-              ✕
-            </button>
-          </li>
-        ))}
-      </ul>
     </form>
   );
 }
@@ -259,6 +192,73 @@ function EventDetail({
           <button onClick={onDelete} className="rounded-lg px-3 py-1.5 text-sm text-rose-600 hover:bg-rose-50">Delete</button>
         </div>
       </div>
+
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <Stat label="Going" value={`${stats.going}/${event.capacity}`} />
+        <Stat label="Maybe" value={stats.maybe} />
+        <Stat label="Declined" value={stats.declined} />
+        <Stat label="Checked in" value={stats.checkedIn} />
+      </div>
+
+      <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+        <div className="h-full bg-brand transition-all" style={{ width: `${Math.min(100, (stats.going / event.capacity) * 100)}%` }} />
+      </div>
+
+      <form onSubmit={addGuest} className="flex flex-wrap gap-2 rounded-xl border border-slate-200 bg-white p-3">
+        <input required placeholder="Guest name" className="input flex-1" value={name} onChange={(e) => setName(e.target.value)} />
+        <input required type="email" placeholder="Email" className="input flex-1" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <button className="rounded-lg bg-brand px-4 text-sm font-semibold text-white">Add guest</button>
+        {error && <p className="w-full text-sm text-amber-700">{error}</p>}
+      </form>
+
+      <div className="flex flex-wrap gap-2">
+        {(["all", "going", "maybe", "declined"] as const).map((s) => (
+          <button
+            key={s}
+            onClick={() => setFilter(s)}
+            className={`rounded-full px-3 py-1 text-sm capitalize ${filter === s ? "bg-brand text-white" : "bg-white text-slate-600"}`}
+          >
+            {s}
+          </button>
+        ))}
+        <input placeholder="Search guests…" className="input ml-auto max-w-56" value={query} onChange={(e) => setQuery(e.target.value)} />
+      </div>
+
+      <ul className="divide-y divide-slate-100 overflow-hidden rounded-xl border border-slate-200 bg-white">
+        {visible.length === 0 && <li className="p-6 text-center text-sm text-slate-400">No guests yet.</li>}
+        {visible.map((g) => (
+          <li key={g.id} className="flex flex-wrap items-center gap-3 p-3">
+            <input
+              type="checkbox"
+              className="size-4 accent-brand"
+              checked={g.checkedIn}
+              disabled={g.status !== "going"}
+              onChange={(e) => patchGuest(g.id, { checkedIn: e.target.checked })}
+              aria-label={`Check in ${g.name}`}
+            />
+            <div className="min-w-40 flex-1">
+              <p className="font-medium">{g.name}</p>
+              <p className="text-xs text-slate-500">{g.email}</p>
+            </div>
+            <select
+              value={g.status}
+              onChange={(e) => patchGuest(g.id, { status: e.target.value as RsvpStatus, checkedIn: false })}
+              className={`rounded-full px-2 py-1 text-xs font-semibold ${STATUS_STYLES[g.status]}`}
+            >
+              <option value="going">going</option>
+              <option value="maybe">maybe</option>
+              <option value="declined">declined</option>
+            </select>
+            <button
+              onClick={() => onChange((ev) => ({ ...ev, guests: ev.guests.filter((x) => x.id !== g.id) }))}
+              className="text-slate-300 hover:text-rose-500"
+              aria-label={`Remove ${g.name}`}
+            >
+              ✕
+            </button>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
